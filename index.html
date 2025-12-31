@@ -16,14 +16,13 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <div id="app">
         <nav class="sidebar">
             <div class="logo">
-                <span class="logo-icon">▲</span>
+                <img src="./logo.jpg" alt="Logo" class="logo-image">
                 <span class="logo-text">Ledger</span>
             </div>
             <ul class="nav-links">
@@ -35,6 +34,9 @@
                 </li>
                 <li data-view="expenditure">
                     <span class="icon">📉</span> Expenditure
+                </li>
+                <li data-view="suppliers">
+                    <span class="icon">🚛</span> Suppliers
                 </li>
                 <li data-view="clients">
                     <span class="icon">👥</span> Clients
@@ -61,39 +63,31 @@
             </header>
 
             <div id="view-container">
-                <!-- Views will be injected here -->
+                <!-- Views injected here -->
             </div>
         </main>
     </div>
 
-    <!-- Modals -->
+    <!-- Modal Overlay -->
     <div id="modal-container" class="modal-overlay">
         <div class="modal">
             <div class="modal-header">
-                <h2 id="modal-title">Add New Entry</h2>
+                <h2 id="modal-title">New Entry</h2>
                 <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="entry-form">
-                    <!-- Form content injected dynamically -->
+                    <!-- Form injected here -->
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="./main.js"
-        onerror="alert('Error: main.js could not be loaded. Please check the file location.')"></script>
-    <script>
-        window.addEventListener('load', () => {
-            if (typeof Storage === 'undefined') {
-                console.error("Critical: App logic (main.js) did not initialize.");
-            }
-        });
-    </script>
+    <script src="./main.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW failed', err));
+                navigator.serviceWorker.register('./sw.js').catch(e => console.log('SW failed', e));
             });
         }
     </script>
